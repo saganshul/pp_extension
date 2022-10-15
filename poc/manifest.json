@@ -1,0 +1,21 @@
+{
+    "name": "WebSec - Web Security Extension",
+    "description": "Vulnerable Browser Extension for Web Security course",
+    "version": "0.1.0",
+    "author": "Team PP Extension",
+    "background": {
+        "sevice_worker": "background.js"
+    },
+    "content_scripts": [
+        {
+            "matches": ["<all_urls>"],
+            "js": ["content.js"],
+            "run_at": "document_start"
+        }
+    ],
+    "web_accessible_resources": [{
+      "resources": ["js/arg-1.4.js", "js/parse.js"],
+      "matches": ["<all_urls>"]
+    }],
+    "manifest_version": 3
+}

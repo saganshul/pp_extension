@@ -1,0 +1,1 @@
+Arg.parse(location.search)
