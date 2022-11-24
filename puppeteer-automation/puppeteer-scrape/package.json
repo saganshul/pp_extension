@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "mocha": "^10.1.0",
+    "puppeteer": "^19.2.2"
+  }
+}
