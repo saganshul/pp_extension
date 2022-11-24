@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "version": "0.1",
+  "name": "Clipboard",
+  "description": "Clipboard",
+  "permissions": ["activeTab", "tabs", "tabCapture", "clipboardWrite", "clipboardRead"],
+  "host_permissions": [
+    "*://*/*",
+    "<all_urls>"
+  ],
+  "background": {
+  	"service_worker": "background.js",
+    "type": "module"
+  },
+  "action": {
+  	"default_icon": "image/okay.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ]
+}
