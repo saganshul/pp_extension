@@ -3,7 +3,7 @@
 const fs = require('fs');
 const puppeteer = require('puppeteer');
 
-const extensionPath = '/home/shreyas/Downloads/pp_extension/puppeteer-automation/sample-extension'; // CHANGE ME
+const extensionPath = '/home/shreyas/Downloads/websec-project/pp_extension/puppeteer-automation/sample-extension'; // CHANGE ME
 
 async function run() {
     try {

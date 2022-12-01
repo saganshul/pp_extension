@@ -1,10 +1,12 @@
-<html><head><meta name="color-scheme" content="light dark"></head><body><pre style="word-wrap: break-word; white-space: pre-wrap;">console.log('PP is here');
 var target = {};
 
 function foo(key1, key2, value) {
     console.log(key1, key2, value);
-    target[key1] = {};
-    target[key1][key2] = value;
+    if (target[key1] == undefined) {
+        target[key1] = {};
+    }
+    var mid = target[key1];
+    mid[key2] = value;
 }
 
 function input_value(val) {
@@ -27,6 +29,4 @@ function processClick() {
     return 1;
 }
 
-// module.exports = { pp: pp }
-
-</pre></body></html>
+module.exports = { pp: pp }
