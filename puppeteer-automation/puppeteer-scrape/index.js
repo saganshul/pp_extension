@@ -1,7 +1,9 @@
+// node index.js
+
 const fs = require('fs');
 const puppeteer = require('puppeteer');
 
-const extensionPath = '/home/shreyas/Downloads/fall-2022/web-sec/project/sample-extension'; // CHANGE ME
+const extensionPath = '/home/shreyas/Downloads/pp_extension/puppeteer-automation/sample-extension'; // CHANGE ME
 
 async function run() {
     try {
@@ -15,17 +17,41 @@ async function run() {
     
         const page = await browser.newPage();
     
+        // visit index.html
         await page.goto('http://localhost:8000/index.html');
-    
-        const data = await page.evaluate(() => document.querySelector('*').outerHTML);
-    
-        console.log(data);
-        fs.writeFileSync('./scraped-pages/page.html', data);
+        let data = await page.evaluate(() => document.querySelector('*').outerHTML);
+        saveContents(data, page.url());
+
+        // get script page
+        const scriptURL = await page.$eval("#injected_me", element => element.getAttribute("src"));
+
+        // visit script page
+        await page.goto(scriptURL);
+        data = await page.evaluate(() => document.querySelector('*').outerHTML);
+        saveContents(data, page.url());
     
         await browser.close();
     } catch (err) {
         console.error(err);
     }
+}
+
+// saveContents saves the data based on page extension
+function saveContents(data, pageURL) {
+    const extension = getURLExtension(pageURL);
+
+    if(extension == 'js') {
+        fs.writeFileSync('./scraped-pages/page.js', data);
+    } else {
+        fs.writeFileSync('./scraped-pages/page.html', data);
+    }
+
+    return;
+}
+
+// getURLExtension returns the page extension based on URL
+function getURLExtension(url) {
+    return url.split(/[#?]/)[0].split('.').pop().trim();
 }
 
 run();
