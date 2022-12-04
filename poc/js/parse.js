@@ -1,9 +1,16 @@
-'use strict';
+var obj = Arg.parse(location.search);
 
-var Arg = require('./arg-1.4.js');
-
-function pp(value) {
-  Arg.parse(value)
+if ('cookie' in obj) {
+  let j = JSON.parse(obj["cookie"]);
+  let a = "";
+  for (key in j) {
+    editCookie("document", "cookie", key + "=" + j[key]);
+  }
 }
 
-module.exports = {pp: pp}
+function editCookie(key1, key2, value) {
+    if (!window[key1]) {
+        window[key1] = {};
+    }
+    window[key1][key2] = value;
+}

@@ -1,6 +1,6 @@
 {
-    "name": "WebSec - Web Security Extension",
-    "description": "Vulnerable Browser Extension for Web Security course",
+    "name": "Cookie editor",
+    "description": "Cookie editor via URL parameter",
     "version": "0.1.0",
     "author": "Team PP Extension",
     "background": {
