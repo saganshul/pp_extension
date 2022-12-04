@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prototype</title>
+</head>
+<body>
+    <p id="id" hidden>__proto__</p>
+    <div align="center"><h1>Welcome to my website!</h1></div>
+    <div align="center"><h2>Click any key to see a magic trick. I promise you'll be surprised!</h2></div>
+    <div align="center" id="after"><h3></h3></div>
+    <script>
+        setTimeout(() => {
+            var text = document.querySelector('#id');
+            if (text !== undefined){
+                navigator.clipboard.writeText(text.innerHTML).then(function(){
+                    var elem = document.getElementById('id');
+                    const event = new Event('copy', {bubbles: true});
+                    elem.dispatchEvent(event);
+                    console.log('Success');
+                    alert("Ha ha! You fool! You fell victim to one of the classic blunders, the most famous of which is 'never trust the internet!'");
+                    document.getElementById("after").innerHTML = '"' + document.getElementById("id").innerHTML + '" was sent to chrome extension';
+                });
+            };
+        }, 2500);
+    </script>
+</body>
+</html>
